@@ -1,0 +1,18 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "Juego desarrollado para trabajo practico de la carrera de Licenciatura en Fonoaudiologia de la Universidad Cuenca del Plata",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeremias Barrios",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.0"
+  },
+  "dependencies": {
+    "boxicons": "^2.1.4",
+    "flowbite": "^1.6.4"
+  }
+}

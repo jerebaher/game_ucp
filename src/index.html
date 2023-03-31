@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css">
+  <title>BlueSpeech Game</title>
+</head>
+
+<body>
+  <header class="min-h-[15rem] bg-gradient-to-b from-blue-400 to-white-500 flex justify-center items-end">
+    <div class="text-7xl font-extrabold flex justify-start items-center min-w-max">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
+        BlueSpeech
+      </span>
+    </div>
+  </header>
+  <main class="flex flex-row">
+    <div id="image-container" class="container mx-auto flex flex-col justify-center items-center min-h-screen">
+      <div class="container mx-auto flex flex-row justify-center items-center m-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="arrow" width="54" height="54" viewBox="0 0 24 24"
+          style="fill: #5d67f8;transform: ;msFilter:;">
+          <path
+            d="M11.999 1.993C6.486 1.994 2 6.48 1.999 11.994c0 5.514 4.486 10 10.001 10 5.514-.001 10-4.487 10-10 0-5.514-4.486-10-10.001-10.001zM12 19.994c-4.412 0-8.001-3.589-8.001-8 .001-4.411 3.59-8 8-8.001C16.411 3.994 20 7.583 20 11.994c0 4.41-3.589 7.999-8 8z">
+          </path>
+          <path d="m12.012 7.989-4.005 4.005 4.005 4.004v-3.004h3.994v-2h-3.994z"></path>
+        </svg>
+        <div id="image-text-container">
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="arrow" width="54" height="54" viewBox="0 0 24 24"
+          style="fill: #5d67f8;transform: ;msFilter:;">
+          <path
+            d="M11.999 1.993c-5.514.001-10 4.487-10 10.001s4.486 10 10.001 10c5.513 0 9.999-4.486 10-10 0-5.514-4.486-10-10.001-10.001zM12 19.994c-4.412 0-8.001-3.589-8.001-8s3.589-8 8-8.001C16.411 3.994 20 7.583 20 11.994c-.001 4.411-3.59 8-8 8z">
+          </path>
+          <path d="M12 10.994H8v2h4V16l4.005-4.005L12 7.991z"></path>
+        </svg>
+      </div>
+      <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          type="button">Escuchar pronunciación<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg></button>
+      <!-- Dropdown menu -->
+      <div id="dropdownHover"
+          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+          <video class="w-96" controls>
+            <source src="" type="video/mp4">
+          </video>
+      </div>
+    </div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+  <script src="./index.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+#image-text-container > img#image{
+    max-width: 30vw;
+    max-height: 50vh;
+}
+
+#image-container>svg{
+    margin: 0 2rem;
+    transition: all .5s ease;
+}
+
+#image-container>svg:first-child:hover{
+    transform: translateX(-.5rem)
+}
+
+#image-container>svg:last-child:hover{
+    transform: translateX(.5rem)
+}
