@@ -2,60 +2,76 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css">
-  <title>BlueSpeech Game</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./index.css">
+    <title>Como se dice | Juego</title>
 </head>
-
 <body>
-  <header class="min-h-[15rem] bg-gradient-to-b from-blue-400 to-white-500 flex justify-center items-end">
-    <div class="text-7xl font-extrabold flex justify-start items-center min-w-max">
-      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-        BlueSpeech
-      </span>
-    </div>
-  </header>
-  <main class="flex flex-row">
-    <div id="image-container" class="container mx-auto flex flex-col justify-center items-center min-h-screen">
-      <div class="container mx-auto flex flex-row justify-center items-center m-8">
-        <svg xmlns="http://www.w3.org/2000/svg" class="arrow" width="54" height="54" viewBox="0 0 24 24"
-          style="fill: #5d67f8;transform: ;msFilter:;">
-          <path
-            d="M11.999 1.993C6.486 1.994 2 6.48 1.999 11.994c0 5.514 4.486 10 10.001 10 5.514-.001 10-4.487 10-10 0-5.514-4.486-10-10.001-10.001zM12 19.994c-4.412 0-8.001-3.589-8.001-8 .001-4.411 3.59-8 8-8.001C16.411 3.994 20 7.583 20 11.994c0 4.41-3.589 7.999-8 8z">
-          </path>
-          <path d="m12.012 7.989-4.005 4.005 4.005 4.004v-3.004h3.994v-2h-3.994z"></path>
-        </svg>
-        <div id="image-text-container">
+    <audio loop autoplay id="music">
+        <source src="./assets/sounds/game-music-loop.mp3" type="audio/mpeg">
+    </audio>
+    <header class="min-h-[15rem] max-h-fit bg-gradient-to-b from-blue-400 to-white-500 flex flex-row justify-around items-center">
+        <div id="container-logo-ucp">
+            <img src="./assets/img/ucp-logo.png" id="logo-ucp">
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" class="arrow" width="54" height="54" viewBox="0 0 24 24"
-          style="fill: #5d67f8;transform: ;msFilter:;">
-          <path
-            d="M11.999 1.993c-5.514.001-10 4.487-10 10.001s4.486 10 10.001 10c5.513 0 9.999-4.486 10-10 0-5.514-4.486-10-10.001-10.001zM12 19.994c-4.412 0-8.001-3.589-8.001-8s3.589-8 8-8.001C16.411 3.994 20 7.583 20 11.994c-.001 4.411-3.59 8-8 8z">
-          </path>
-          <path d="M12 10.994H8v2h4V16l4.005-4.005L12 7.991z"></path>
-        </svg>
-      </div>
-      <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          type="button">Escuchar pronunciación<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor"
-            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg></button>
-      <!-- Dropdown menu -->
-      <div id="dropdownHover"
-          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-          <video class="w-96" controls>
-            <source src="" type="video/mp4">
-          </video>
-      </div>
+        <div class="flex justify-center items-center">
+            <h1 class="text-emerald-700 text-7xl font-extrabold">
+                ¿Cómo se dice?
+            </h1>
+        </div>
+    </header>
+    <div id="drawer-example"
+        class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800"
+        tabindex="-1" aria-labelledby="drawer-label">
+        <h5 id="drawer-label"
+            class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"><svg
+                class="w-5 h-5 mr-2" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    clip-rule="evenodd"></path>
+            </svg>Información</h5>
+        <button type="button" data-drawer-hide="drawer-example" aria-controls="drawer-example"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Close menu</span>
+        </button>
+        <p class="mb-6 text-lg text-gray-500 dark:text-gray-400">
+            <b>Objetivo:</b> Este juego web tiene como objetivo demostrar las potenciales implementaciones de la informatica sobre el campo del estimulo del lenguaje. A fin de lograr una vía didactica y lúdica para los niños y que estos puedan aprender a hablar mientras juegan. 
+        </p>
+        <p class="mb-6 text-lg text-gray-500 dark:text-gray-400">
+            <b>Como se juega:</b> El niño debe leer la palabra que aparece en la pantalla y a continuación repetirla. Para ello, cuenta con la ayuda de un asistente que repite la pronunciación de dicha palabra. 
+        </p>
     </div>
-  </main>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-  <script src="./index.js" type="module"></script>
+    <div class="flex flex-col justify-center items-center mt-20">
+        <ul class="flex flex-col justify-center items-center">
+            <li class="my-5 max-w-fit">
+                <a class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-xl px-5 py-2.5 text-center mr-2 mb-2 min-w-[50%]"
+                    href="./game.html">Jugar</a>
+            </li>
+            <li>
+                <button type="button"
+                    class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-xl px-5 py-2.5 text-center mr-2 mb-2" data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example">Acerca del juego</button>
+            </li>
+            <li>
+                <button type="button" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-xl px-5 py-2.5 text-center mr-2 mb-2" id="music-btn">Desactivar sonido</button>
+            </li>
+        </ul>
+    </div>
+    <div class="flex justify-end mt-10">
+        <p class="me-5"><b>Desarrollado por Milagros Amarilla</b></p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>

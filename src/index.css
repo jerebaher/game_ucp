@@ -3,15 +3,25 @@
     max-height: 50vh;
 }
 
-#image-container>svg{
+#image-container>div.container>svg{
     margin: 0 2rem;
     transition: all .5s ease;
 }
 
-#image-container>svg:first-child:hover{
+#image-container>div.container>svg:first-child:hover{
     transform: translateX(-.5rem)
 }
 
-#image-container>svg:last-child:hover{
+#image-container>div.container>svg:last-child:hover{
     transform: translateX(.5rem)
+}
+
+div#container-logo-ucp{
+    height: 100%;
+    display: flex;
+}
+
+img#logo-ucp{
+    width: 40vw;
+    height: 50vh;
 }
